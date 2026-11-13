@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: r34-tg-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BOT_TOKEN
+        sync: false
+      - key: ALLOWED_USER_ID
+        sync: false
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: R34_USER_ID
+        sync: false
+      - key: R34_API_KEY
+        sync: false
+      - key: DEFAULT_LIMIT
+        value: 25
+      - key: HARD_MAX_LIMIT
+        value: 300
+      - key: SEND_DELAY
+        value: 1.3
+      - key: SELF_PING
+        value: 1
